@@ -1,21 +1,23 @@
+import datetime
+
 daftar_barang = [
     {
         'nama_barang' : 'sepatu',
         'stock' : 100,
         'kategori' : 'apd',
-        'harga' : 20000
+        'harga' : 20000,
     },
     {
         'nama_barang' : 'helm',
         'stock' : 20,
         'kategori' : 'apd',
-        'harga' : 15000
+        'harga' : 15000,
     },
     {
         'nama_barang' : 'solder',
         'stock' : 20,
         'kategori' : 'elektronik',
-        'harga' : 35000
+        'harga' : 35000,
     }
 ]
 
@@ -32,35 +34,60 @@ def print_barang(daftar_barang):
         
         print(f"{nama_barang:<13} | {stock:<8} | {kategori:<10} | {harga:<10}")
 
+def print_log():
+    print(f"\n{'nama barang':<13} | {'stock':<8} | {'kategori':<10} | {'harga':<10} | {'status':<20} | {'tanggal':<10} | {'waktu':<10}")
+    for i in range(len(list_log_kosong)):
+        nama_barang = list_log_kosong[i]['nama_barang']
+        stock = list_log_kosong[i]['stock']
+        kategori = list_log_kosong[i]['kategori']
+        harga = list_log_kosong[i]['harga']
+        status = list_log_kosong[i]['status']
+        tanggal = list_log_kosong[i]['tanggal']
+        waktu = list_log_kosong[i]['waktu']
+        
+        print(f"{nama_barang:<13} | {stock:<8} | {kategori:<10} | {harga:<10} | {status:<20} | {tanggal:<10} | {waktu:<10}")
 
-welcome_home = '''Selamat Datang di Cek Stok Gudang
+welcome_home = '''
+Selamat Datang di Cek Stok Gudang
 
 List Menu : 
 1. Menampilkan daftar barang
 2. Menambah barang
 3. Mengubah data barang
 4. Menghapus stok barang
-5. Exit Program '''
+5. Mengeluarkan barang
+6. Log data
+7. Exit Program'''
 
 ##############      read done
-welcome_read = '''Silahkan pilih sub menu read data
+welcome_read = '''
+Silahkan pilih sub menu read data
 1. Cek Seluruh daftar barang yang ada
 2. Cari barang yang ada
 3. Sortir barang berdasarkan kategori
 4. kembali ke menu utama'''
 
-welcome_create = '''++++++++++Tambah data barang++++++++++
+welcome_create = '''
+++++++++++Tambah data barang++++++++++
 1. tambah data barang
 2. kembali ke menu utama'''
 
-welcome_update = '''++++++++++Ubah data barang++++++++++
+welcome_update = '''
+++++++++++Ubah data barang++++++++++
 1. ubah data barang
 2. kembali ke menu utama'''
 
-welcome_delete = '''++++++++++Ubah data barang++++++++++
+welcome_delete = '''
+++++++++++Ubah data barang++++++++++
 1. hapus data barang
 2. kembali ke menu utama'''
 
+welcome_belanja = '''
+==========Menu Pengeluaran Barang==========
+1. Masukkan Keranjang
+2. Checkout barang belanjaan
+3. Kembali menu utama'''
+list_log_kosong = []
 while True:
     print(welcome_home)
     pilihan_menu = input("masukkan menu yang ingin di cek : ")
@@ -91,7 +118,6 @@ while True:
                         kategori = daftar_barang[i]['kategori']
                         harga = daftar_barang[i]['harga']
                         if nama_barang == barang_yang_dicari:
-                            print_kosongan()
                             print(f"{nama_barang:<13} | {stock:<8} | {kategori:<10} | {harga:<10}")
                             break
                     else:
@@ -125,8 +151,8 @@ while True:
     elif pilihan_menu == '2':
         while True:
             print(welcome_create)
-            pilihan = int(input("silahkan pilih sub menu create data 1 - 2 : "))
-            if pilihan == 1:
+            pilihan = input("silahkan pilih sub menu create data 1 - 2 : ")
+            if pilihan == '1':
                 nama_barang_tambah = input("masukkan barang yang ingin ditambahkan : ")
 
                 for i in range(len(daftar_barang)):
@@ -155,10 +181,24 @@ while True:
                                 }
                             )
                             print(f"data telah disimpan")
+                            current_datetime = datetime.datetime.now()
+                            formatted_date = current_datetime.strftime("%Y-%m-%d")
+                            formatted_time = current_datetime.strftime("%H:%M:%S")
+                            list_log_kosong.append(
+                                {
+                                    'nama_barang' : nama_barang_tambah,
+                                    'stock' : stock,
+                                    'kategori' : kategori,
+                                    'harga' : harga,
+                                    'status' : 'barang ditambahkan',
+                                    'tanggal' : formatted_date,
+                                    'waktu' : formatted_time
+                                }
+                            )
                             break
                         else:
                             continue  
-            elif pilihan == 2:
+            elif pilihan == '2':
                 break
             else:
                 continue 
@@ -199,6 +239,20 @@ while True:
                                     elif is_done == 'y':
                                         daftar_barang[i][kolom_yang_ingin_diganti] = hasil
                                         a = 1
+                                        current_datetime = datetime.datetime.now()
+                                        formatted_date = current_datetime.strftime("%Y-%m-%d")
+                                        formatted_time = current_datetime.strftime("%H:%M:%S")
+                                        list_log_kosong.append(
+                                        {
+                                            'nama_barang' : nama_barang_tambah,
+                                            'stock' : stock,
+                                            'kategori' : kategori,
+                                            'harga' : harga,
+                                            'status' : f"kolom yang diupdate {kolom_yang_ingin_diganti}",
+                                            'tanggal' : formatted_date,
+                                            'waktu' : formatted_time
+                                        }
+                                        )
                                         print(f"data telah diupdate")
                                         break
                                     else:
@@ -234,6 +288,20 @@ while True:
                             yn_hapus = input("yakin data mau dihapus ? (y/n)")
                             if yn_hapus == 'y':
                                 a = i
+                                current_datetime = datetime.datetime.now()
+                                formatted_date = current_datetime.strftime("%Y-%m-%d")
+                                formatted_time = current_datetime.strftime("%H:%M:%S")
+                                list_log_kosong.append(
+                                    {
+                                        'nama_barang' : nama_barang_tambah,
+                                        'stock' : stock,
+                                        'kategori' : kategori,
+                                        'harga' : harga,
+                                        'status' : 'barang dihapus',
+                                        'tanggal' : formatted_date,
+                                        'waktu' : formatted_time
+                                    }
+                                )
                                 del daftar_barang[i]
                                 print(f"data sudah dihapus")
                                 break
@@ -249,11 +317,70 @@ while True:
             else:
                 continue
     
-    elif pilihan_menu == '5':
+    elif pilihan_menu == '7':
         break
 
+    elif pilihan_menu == '6':
+        if list_log_kosong == []:
+            print(f"\nlog masih belum ada data")
+
+        else:
+            print_log()
+    
+    elif pilihan_menu == '5':
+        list_belanja = []
+        while True:
+            print(welcome_belanja)
+            sub_menu_belanja = input("masukkan pilihan sub menu Pengeluaran Barang : ")
+            if sub_menu_belanja == '1':
+                barang_yang_dibeli = input("masukkan barang yang ingin dibeli : ")
+                for i in range(len(daftar_barang)):
+                    nama_barang = daftar_barang[i]['nama_barang']
+                    stock = daftar_barang[i]['stock']
+                    kategori = daftar_barang[i]['kategori']
+                    harga = daftar_barang[i]['harga']
+
+                    if nama_barang == barang_yang_dibeli:
+                        masukkan_stock = int(input("masukkan jumlah yang ingin dibeli : "))
+                        if masukkan_stock <= 0:
+                            print(f"masukkan jumlah yang valid")
+                            break
+                        elif masukkan_stock < stock:
+                            daftar_barang[i]['stock'] = daftar_barang[i]['stock'] - masukkan_stock
+                            list_belanja.append(
+                                {   
+                                    'nama_barang' : nama_barang,
+                                    'stock' : masukkan_stock,
+                                    'kategori' : kategori,
+                                    'harga' : harga
+                                 }
+                                )
+                            print(f"barang sudah ditambahkan")
+                            break
+                        else:
+                            print(f"jumlah yang dimasukkan tidak boleh melebihi stock")
+                            break
+
+                else:
+                    print(f"barang tidak ditemukan")
+            
+            elif sub_menu_belanja == '2':
+                if list_belanja == []:
+                    print(f"keranjang kosong")
+                else:
+                    print_barang(list_belanja)
+            elif sub_menu_belanja == '3':
+                break
+            else:
+                continue
     else:
         continue
+
+
+# Fungsi untuk melakukan pembelian
+
+
+
 
 
 
