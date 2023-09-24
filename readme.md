@@ -5,6 +5,6 @@ This project involves the development of a Python-based warehouse inventory mana
 ## Business Tasks
 
 ### Key Features
-- Business search by category (e.g., restaurants, bookstores, workshops, etc.).
-- Business search by item name (city, region, or postal code).
+- Business search by category.
+- Business search by item name.
 
