@@ -7,4 +7,5 @@ This project involves the development of a Python-based warehouse inventory mana
 ### Key Features
 - Business search by category.
 - Business search by item name.
+- Log stock data
 
