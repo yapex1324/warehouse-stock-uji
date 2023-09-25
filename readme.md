@@ -1,6 +1,6 @@
 # Yellow Pages Program
 
-![Yellow Pages Logo](path/to/logo.png)
+![Yellow Pages Logo]([path/to/logo.png](https://github.com/yapex1324/warehouse-stock-uji/blob/main/warehouse.jpg))
 
 ## Context
 
