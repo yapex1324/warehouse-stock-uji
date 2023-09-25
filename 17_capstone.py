@@ -143,9 +143,9 @@ while True:
 
         while True:
             print(welcome_read)
-            pilihan = int(input("silahkan pilih sub menu read data : "))
+            pilihan = input("silahkan pilih sub menu read data : ")
 
-            if pilihan == 1:
+            if pilihan == '1':
                 if len(daftar_barang) == 0:
                     print(f"tidak ada daftar barang")
 
@@ -153,7 +153,7 @@ while True:
                     print_kosongan()
                     print_barang(daftar_barang)
 
-            elif pilihan == 2:
+            elif pilihan == '2':
                 if len(daftar_barang) == 0:
                     print(f"tidak ada daftar barang")
                 else:
@@ -170,7 +170,7 @@ while True:
                     else:
                         print(f"barang tidak ditemukan")
             
-            elif pilihan == 3:
+            elif pilihan == '3':
                 barang_yang_disortir = input("masukkan nama kategori yang ingin dicari : ")
                 barang_yang_disortir_list = []
                 for i in range(len(daftar_barang)):
@@ -188,7 +188,7 @@ while True:
                 else:
                     print(f"kategori barang tidak ditemukan")
             
-            elif pilihan == 4:
+            elif pilihan == '4':
                 break
 
             else:
@@ -354,6 +354,7 @@ while True:
                     if nama_barang == barang_yang_dihapus:
                         while True:
                             yn_hapus = input("yakin data mau dihapus ? (y/n)")
+                            yn_hapus = yn_hapus.lower()
                             if yn_hapus == 'y':
                                 a = i
                                 current_datetime = datetime.datetime.now()
