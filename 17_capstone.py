@@ -211,12 +211,31 @@ while True:
                             print(f"barang yang ditambahkan sudah ada")
                             break
                 else:
-                    stock = int(input("silahkan masukkan jumlah stock barang : "))
+                    stock = input("silahkan masukkan jumlah stock barang : ")
+                    if stock.isnumeric():
+                        stock = int(stock)
+                    else:
+                        print(f"")
+                        print(f"masukkan input berupa angka")
+                        print(f"kembali ke menu utama")
+                        break
+
                     kategori = input("silahkan masukkan kategori barang : ")
-                    harga = int(input("silahkan masukkan harga barang : "))
+
+                    harga = input("silahkan masukkan harga barang : ")
+                    if harga.isnumeric():
+                        harga = int(harga)
+                    else:
+                        print(f"")
+                        print(f"masukkan input berupa angka")
+                        print(f"kembali ke menu utama")
+                        break
+                    
                     while True:
                         is_done = input("yakin mau disimpan (y/n)? ")
+                        is_done = is_done.lower()
                         if is_done == "n":
+                            print(f"data tidak jadi disimpan")
                             break
                         elif is_done == 'y':
                             daftar_barang.append(
@@ -280,6 +299,7 @@ while True:
                                 hasil = input(f"masukkan data {kolom_yang_ingin_diganti} yang baru : ")
                                 while True:
                                     is_done = input("yakin mau disimpan (y/n)? ")
+                                    is_done = is_done.lower()
                                     if is_done == "n":
                                         print(f"data tidak jadi disimpan")
                                         a = 1
