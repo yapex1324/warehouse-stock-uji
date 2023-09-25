@@ -20,3 +20,9 @@ The data used in this project includes:
 
 This data will be used to create a local warehouse stock database that users can search. Ensure this data is prepared before running the program.
 
+### Running the Program
+
+To run the program, use the following command:
+```python
+python 17_capstone.py.py
+
