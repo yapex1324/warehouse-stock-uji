@@ -9,3 +9,14 @@ This project involves the development of a Python-based warehouse inventory mana
 - Business search by item name.
 - Log stock data
 
+## Data Summary
+
+The data used in this project includes:
+
+- Product Name
+- Product Category
+- Stock
+- Price
+
+This data will be used to create a local warehouse stock database that users can search. Ensure this data is prepared before running the program.
+
