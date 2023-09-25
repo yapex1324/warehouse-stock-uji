@@ -1,4 +1,4 @@
-# Yellow Pages Program
+# Warehouse Stock Program
 
 ![Yellow Pages Logo](https://github.com/yapex1324/warehouse-stock-uji/blob/main/warehouse.jpg)
 
