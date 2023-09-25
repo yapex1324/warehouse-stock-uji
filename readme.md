@@ -28,5 +28,5 @@ This data will be used to create a local warehouse stock database that users can
 
 To run the program, use the following command:
 ```python
-python 17_capstone.py.py
+python 17_capstone.py
 
